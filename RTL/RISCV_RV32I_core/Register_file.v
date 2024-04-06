@@ -22,7 +22,7 @@
 //         |                     |
 //         +---------------------+
 // at rising clk: if (we) rd=data, if (rst) all register = 0
-// always output rs1 and rs2 data based on rs1 ans rs2 address
+// always output rs1 and rs2 data based on rs1 and rs2 address
 // 
 // Dependencies: none
 // 
