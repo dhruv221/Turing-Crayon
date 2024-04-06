@@ -6,4 +6,4 @@ The name Turing Crayon was inspired by by Alan Turing and Seymour Cray while men
 ## File Structure
 - RTL/RISCV_RV32I_core: rv32i core description
 - RTL/VGA_driver: vga driver description
-- RTL/Turing_Crayon: integration of RISCV_RV32I_core, VGA_driver, instruction_mem, data_mem.
+- RTL/Turing_Crayon: integration of RISCV_RV32I_core, VGA_driver.
