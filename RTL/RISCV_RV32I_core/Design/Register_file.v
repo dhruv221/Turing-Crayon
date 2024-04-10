@@ -3,26 +3,26 @@
 // 
 // Engineer: Agastasya Dahiya
 // 
-// Create Date: 06.04.2024 17:07:38
-// Design Name: Register_file
-// Module Name: Register_file
-// Project Name: RISCV_RV32I_core
+// Create Date:    06.04.2024 17:07:38
+// Design Name:    Register_file
+// Module Name:    Register_file
+// Project Name:   RISCV_RV32I_core
 // Target Devices: Nexys 4 DDR
 // 
 // Description: Regiter File for rv32i 
-//          +---------------------+
-//          |                     |
-//     clk -|                     |-> rs1
-//    reset-|      Register       |-> rs2
-//       we-|       File          |
-//  rd_addr-|                     |
-//  rd_data-|                     |
-// rs1_addr-|                     |
-// rs2_addr-|                     |
-//          |                     |
-//          +---------------------+
-// at rising clk: if (we) rd=data, if (rst) all register = 0
-// always output rs1 and rs2 data based on rs1 and rs2 address
+//                       +---------------------+
+//                       |                     |
+//                  clk -|                     |-> rs1
+//                 reset-|      Register       |-> rs2
+//                    we-|       File          |
+//               rd_addr-|                     |
+//               rd_data-|                     |
+//              rs1_addr-|                     |
+//              rs2_addr-|                     |
+//                       |                     |
+//                       +---------------------+
+//              at rising clk: if (we) rd=data, if (rst) all register = 0
+//              always output rs1 and rs2 data based on rs1 and rs2 address
 // 
 // Dependencies: none
 // 
