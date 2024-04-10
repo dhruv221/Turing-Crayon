@@ -39,6 +39,7 @@ module Imm_generator(
     output [31:0] imm_U, imm_J
     );
 
+    //all possible imm declarations
     wire [31:0] imm_U, imm_J, imm_I, imm_S, imm_B;
     // 1. U type     1           2
     assign imm_U = {inst[31:12], 12'd0};
