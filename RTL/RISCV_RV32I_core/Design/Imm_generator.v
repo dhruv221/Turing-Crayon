@@ -34,13 +34,13 @@
 
 module Imm_generator(
     input [31:0] inst,
-    input [2:0] imm_type,
-    //output [31:0] imm_x,
-    output [31:0] imm_U, imm_J
+    input [2:0] inst_type,
+    output reg [31:0] imm_x
     );
 
     //all possible imm declarations
     wire [31:0] imm_U, imm_J, imm_I, imm_S, imm_B;
+
     // 1. U type     1           2
     assign imm_U = {inst[31:12], 12'd0};
     // 2. J type     1              2            3         4            5
@@ -52,5 +52,17 @@ module Imm_generator(
     // 5. B type     1              2        3            4           5
     assign imm_B = {{20{inst[31]}}, inst[7], inst[30:25], inst[11:8], 1'b0};
 
-    
+    always @(inst or inst_type)
+    begin
+        case(inst_type)
+            3'd0: imm_x = imm_U; // U type
+            3'd1: imm_x = imm_J; // J type
+            3'd2: imm_x = imm_I; // I type
+            3'd3: imm_x = imm_S; // S type
+            3'd4: imm_x = imm_B; // B type
+            
+            default: imm_x = imm_I; // I type
+        endcase
+    end
+
 endmodule
