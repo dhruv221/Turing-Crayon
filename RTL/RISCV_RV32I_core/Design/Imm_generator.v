@@ -12,7 +12,7 @@
 // Description: immediate value generator for rv32i 
 //                       +---------------------+
 //                  inst-|                     |-> imm_x
-//              imm_type-|        Imm          |
+//             inst_type-|        Imm          |
 //                       |     generator       |
 //                       |                     |
 //                       +---------------------+
