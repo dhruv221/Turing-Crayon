@@ -33,7 +33,7 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-module ALUu(
+module ALU(
     input [31:0] rs1,     // Input operand A
     input [31:0] rs2,     // Input operand B
     input [3:0] ALUsel,   // Operation code: 4 bits
