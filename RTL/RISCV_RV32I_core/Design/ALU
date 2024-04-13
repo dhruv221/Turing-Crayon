@@ -15,7 +15,7 @@
 //                       |         ALU         |-> rd
 //                   rs2-|                     |
 //                       +---------------------+
-//              depending on the opcode, ALU will perform the following operations
+//              depending on the opcode, ALU will perform the following operations:
 //              1. ADD, 
 //              2. AND, 
 //              3. OR,
