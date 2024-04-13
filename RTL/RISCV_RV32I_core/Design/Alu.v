@@ -12,7 +12,7 @@
 // Description: immediate value generator for rv32i 
 //                       +---------------------+
 //                   rs1-|                     |
-//                       |         ALU         |-> rd
+//                       |         Alu         |-> rd
 //                   rs2-|                     |
 //                       +---------------------+
 //              depending on the opcode, ALU will perform the following operations:
@@ -34,8 +34,8 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 module Alu(
-    input [31:0] rs1,     // Input operand A
-    input [31:0] rs2,     // Input operand B
+    input [31:0] rs1,     // Input
+    input [31:0] rs2,     // Input
     input [3:0] ALUsel,   // Operation code: 4 bits
     output reg [31:0] rd  // Output result
     );
