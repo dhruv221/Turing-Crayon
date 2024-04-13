@@ -53,7 +53,7 @@ begin
         4'b1000: rd = rs1 + ~(rs2) + 1;    // subtract operation
         4'b0100: rd = rs1 ^ rs2;           // XOR operation
 
-        default: rd = 32'bx; // Default output
+        default: rd = rs1 + rs2; // Default operation is addition
     endcase
 end
 
