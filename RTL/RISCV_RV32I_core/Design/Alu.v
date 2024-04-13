@@ -4,8 +4,8 @@
 // Engineer: Agastasya Dahiya
 // 
 // Create Date:    13.04.2024 22:49:38
-// Design Name:    ALU
-// Module Name:    ALU
+// Design Name:    Alu
+// Module Name:    Alu
 // Project Name:   RISCV_RV32I_core
 // Target Devices: Nexys 4 DDR
 // 
@@ -33,7 +33,7 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-module ALU(
+module Alu(
     input [31:0] rs1,     // Input operand A
     input [31:0] rs2,     // Input operand B
     input [3:0] ALUsel,   // Operation code: 4 bits
