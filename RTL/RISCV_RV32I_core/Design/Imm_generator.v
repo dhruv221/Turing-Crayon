@@ -33,8 +33,8 @@
 
 
 module Imm_generator(
-    input [31:0] inst,
-    input [2:0] inst_type,
+    input wire [31:0] inst,
+    input wire [2:0] inst_type,
     output reg [31:0] imm_x
     );
 
