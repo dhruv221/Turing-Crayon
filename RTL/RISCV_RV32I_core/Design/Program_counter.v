@@ -31,10 +31,10 @@
 
 
 module Program_counter(
-    input sysclk,              // system clock
-    input sysreset,            // system reset
-    input [31:0] pc_in,        // pc input value
-    input pc_src,              // pc update source select
+    input sysclk,          // system clock
+    input sysreset,        // system reset
+    input [31:0] pc_in,    // pc input value
+    input pc_src,          // pc update source select
     output [31:0] pc_curr, // pc current value
     output [31:0] pc_next  // pc next value
     );
