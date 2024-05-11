@@ -10,14 +10,10 @@
 // Target Devices: Nexys 4 DDR
 // 
 // Description: Program counter for 32 bit wide instruction memory
-//
 //                        +---------------------+
-//                 sysclk-|                     |
-//                        |                     |-> pc_curr
-//               sysreset-|                     |
-//                        |         PC          |-> pc_next
-//                 pc_src-|                     |
-//                        |                     |
+//                 sysclk-|                     |-> pc_curr
+//               sysreset-|         PC          |-> pc_next
+//                 pc_sel-|                     |
 //                  pc_in-|                     |
 //                        +---------------------+
 //
@@ -34,7 +30,7 @@ module Program_counter(
     input sysclk,          // system clock
     input sysreset,        // system reset
     input [31:0] pc_in,    // pc input value
-    input pc_src,          // pc update source select
+    input pc_sel,          // pc update source select
     output [31:0] pc_curr, // pc current value
     output [31:0] pc_next  // pc next value
     );
@@ -42,7 +38,7 @@ module Program_counter(
     reg [31:0] PC;
 
     always @(posedge sysclk) begin
-        case (pc_src)
+        case (pc_sel)
             1'b0: PC <= PC + 1;
             1'b1: PC <= pc_in;
 
