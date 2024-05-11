@@ -52,7 +52,7 @@ module Imm_generator(
     // 5. B type     1              2        3            4           5
     assign imm_B = {{20{inst[31]}}, inst[7], inst[30:25], inst[11:8], 1'b0};
 
-    always @(inst or inst_type)
+    always @(*)
     begin
         case(inst_type)
             3'd0: imm_x = imm_U; // U type
