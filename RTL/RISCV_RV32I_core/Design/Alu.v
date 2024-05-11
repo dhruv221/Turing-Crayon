@@ -9,12 +9,11 @@
 // Project Name:   RISCV_RV32I_core
 // Target Devices: Nexys 4 DDR
 // 
-// Description: immediate value generator for rv32i 
+// Description: alu_op - 3 bits of funct3 and bit 1 bit of funct7 (bit 30 of instruction)
+//              as bit 30 of inst differentiates between sra/srl instruction or add/sub
 //                        +---------------------+
 //                   A_in-|                     |
-//                        |         Alu         |-> result
-//                   B_in-|                     |
-//                       -|                     |
+//                   B_in-|         Alu         |-> result
 //                 alu_op-|                     |
 //                        +---------------------+
 //              depending on the alu_op, ALU will perform the following operations:
@@ -26,9 +25,6 @@
 //              6. SRL,
 //              7. SUB,
 //              8. XOR
-//              
-//              alu_op - 3 bits of funct3 and bit 1 bit of funct7 (bit 30 of instruction)
-//              as bit 30 of inst differentiates between sra and srl instruction
 //
 // Dependencies: none
 // 
@@ -58,7 +54,7 @@ module Alu(
             4'b1000: result = A_in - B_in;                    // SUB
             4'b0100: result = A_in ^ B_in;                    // XOR
 
-            default: result = A_in + B_in; // ADD
+            default: result = A_in + B_in;                    // ADD
         endcase
     end
 
