@@ -52,6 +52,7 @@ module Register_file(
     always @(posedge sysclk) begin
         if (we) begin
             regFile[rd_addr] <= rd_data;
+            regFile[0] <= 32'd0;
         end
         
         if (sysreset) begin
