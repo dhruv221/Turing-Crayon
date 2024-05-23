@@ -32,7 +32,7 @@ module riscv_tb;
         .inst_addr(inst_addr)
     );
 
-    always #(CLK_PERIOD / 5) clk <= ~clk;
+    always #(CLK_PERIOD / 2) clk <= ~clk;
         initial begin
             inst = 32'h00700093;
             #10;
