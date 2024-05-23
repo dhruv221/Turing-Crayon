@@ -24,7 +24,9 @@
 //              5. SRA,
 //              6. SRL,
 //              7. SUB,
-//              8. XOR
+//              8. XOR,
+//              9. SLT,
+//              10. SLTU
 //
 // Dependencies: none
 // 
@@ -45,16 +47,18 @@ module Alu(
     always @ (A_in, B_in, alu_op)
     begin
         case(alu_op)
-            4'b0000: result = A_in + B_in;                    // ADD
-            4'b0111: result = A_in & B_in;                    // AND
-            4'b0110: result = A_in | B_in;                    // OR
-            4'b0001: result = A_in << B_in[4:0];              // SLL
-            4'b1101: result = $signed(A_in) >>> B_in[4:0];    // SRA
-            4'b0101: result = A_in >> B_in[4:0];              // SRL
-            4'b1000: result = A_in - B_in;                    // SUB
-            4'b0100: result = A_in ^ B_in;                    // XOR
+            4'b0000: result = A_in + B_in;                                    // ADD
+            4'b0111: result = A_in & B_in;                                    // AND
+            4'b0110: result = A_in | B_in;                                    // OR
+            4'b0001: result = A_in << B_in[4:0];                              // SLL
+            4'b1101: result = $signed(A_in) >>> B_in[4:0];                    // SRA
+            4'b0101: result = A_in >> B_in[4:0];                              // SRL
+            4'b1000: result = A_in - B_in;                                    // SUB
+            4'b0100: result = A_in ^ B_in;                                    // XOR
+            4'b0010: result = ($signed(A_in) < $signed(B_in)) ? 1 : 0;        // SLT
+            4'b0011: result = (A_in < B_in) ? 1 : 0;                          // SLTU
 
-            default: result = A_in + B_in;                    // ADD
+            default: result = A_in + B_in;                                    // ADD
         endcase
     end
 
