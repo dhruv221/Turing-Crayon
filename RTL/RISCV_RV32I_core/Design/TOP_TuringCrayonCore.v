@@ -55,4 +55,24 @@ module TOP_TuringCrayonCore(
         .
     );
 
+        
+        wire [31:0] A_in;
+    wire [31:0] B_in;
+    wire [31:0] result;
+    // ALU
+    Alu Alu(
+        .A_in(A_in),
+        .B_in(B_in),
+        .alu_op(alu_op),
+        .result(result)
+    ); 
+
+    // BRANCH COMPARE
+    Branch_coompare Branch_coompare(
+        .rs1(rs1),
+        .rs2(rs2),
+        .funct3(funct3),
+        .brq(brq)
+    );
+
 endmodule
