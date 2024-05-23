@@ -29,7 +29,7 @@ module riscv_tb;
         .funct3_2(inst[14]),
         .dmem_we(dmem_we),
         .dmem_din(dmem_din),
-        .inst_addr(inst_addr);
+        .inst_addr(inst_addr)
     );
 
     always #(CLK_PERIOD / 5) clk <= ~clk;
