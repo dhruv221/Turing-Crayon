@@ -33,8 +33,8 @@ module wb_mux(
         case (wb_sel)
             2'd0: rd_data <= pc_next;
             2'd1: rd_data <= result;
-            2'd2: rd_data <= data_out;
-            2'd3: rd_data <= imm_x;
+            2'd2: rd_data <= imm_x;
+            2'd3: rd_data <= data_out;
 
             default: rd_data <= data_out;
         endcase

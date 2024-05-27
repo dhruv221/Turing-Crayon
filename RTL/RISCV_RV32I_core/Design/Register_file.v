@@ -49,7 +49,7 @@ module Register_file(
     reg [31:0] regFile[0:31];
 
     integer i;
-    always @(posedge sysclk) begin
+    always @(negedge sysclk) begin
         if (we) begin
             regFile[rd_addr] <= rd_data;
             regFile[0] <= 32'd0;

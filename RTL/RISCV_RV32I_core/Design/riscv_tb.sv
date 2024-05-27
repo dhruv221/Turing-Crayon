@@ -1,38 +1,29 @@
-`timescale 1ns / 1ps
-//////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
-// 
-// Create Date: 24.05.2024 03:10:34
-// Design Name: 
-// Module Name: TOP_TuringCrayonCore
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
-// Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
-//////////////////////////////////////////////////////////////////////////////////
+`timescale 1ns/1ps
+
+module riscv_tb;
+    parameter CLK_PERIOD = 10;
+    // io ports
+    logic [31:0] inst_addr;
+    logic sysreset = 0;
+    logic sysclk = 1;
+    logic [31:0] instruction;
+    logic [7:0] dmem_dout = 0;
+    logic [31:0] dmem_addr;
+    logic dmem_we;
+    logic [7:0] dmem_din;
+    // for debug
 
 
-module TOP_TuringCrayonCore(
-    // IO PORTS
-    output [31:0] inst_addr,
-    input sysreset,
-    input sysclk,
-    input [31:0] instruction,
-
-    input [7:0] dmem_dout,
-    output [31:0] dmem_addr,
-    output dmem_we,
-    output [7:0] dmem_din
-    // FOR DEGUB
-    );
+    // TOP_TuringCrayonCore dut(
+    //     .inst_addr(inst_addr),
+    //     .sysreset(sysreset),
+    //     .sysclk(sysclk),
+    //     .instruction(instruction),
+    //     .dmem_dout(dmem_dout),
+    //     .dmem_addr(dmem_addr),
+    //     .dmem_we(dmem_we),
+    //     .dmem_din(dmem_din)
+    // );
 
     // control signals:
     wire brq;
@@ -133,10 +124,29 @@ module TOP_TuringCrayonCore(
         .wb_sel(wb_sel)
     );
 
+    always #(CLK_PERIOD / 2) sysclk <= ~sysclk;
+        initial begin
+                sysreset = 1;
+                instruction = 32'h00A00093;
+                dmem_dout = 0;
+            #10;
+                sysreset = 0;
+            #10;
+                instruction = 32'h000082A3;
+            #10;
+                instruction = 32'h002081B3;
+            // #10;
+            //     instruction = 32'h00519213;
+            // #10;
+            //     instruction = 32'h003262B3;
+            // #10;
+            //     instruction = 32'h40200333;
+            #20;
+            $finish;
+    end
+
     assign dmem_addr = alu_result;
     assign dmem_din = rs2[7:0];
     assign dmem_we = mem_we;
     assign inst_addr = pc_curr;
-    
-
 endmodule
